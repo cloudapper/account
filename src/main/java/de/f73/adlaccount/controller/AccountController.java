@@ -1,18 +1,13 @@
 package de.f73.adlaccount.controller;
 
-import java.time.LocalDateTime;
-import java.util.Collection;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.f73.adlaccount.persistence.models.AccountEntity;
@@ -40,9 +35,9 @@ public class AccountController {
     }
 
     @PostMapping("/signup")
-    public String singUp(@RequestBody AccountEntity account) {
+    public ResponseEntity<String> singUp(@RequestBody AccountEntity account) {
         LOG.info("Data saved: " + account.getFin());
-        return "TODO";
+        return new ResponseEntity<>(account.getFin() + " saved!", HttpStatus.CREATED);
     }
 
     @GetMapping("/signin")
