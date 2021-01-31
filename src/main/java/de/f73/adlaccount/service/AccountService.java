@@ -27,10 +27,8 @@ public class AccountService {
 		return new String(token);
     }
     
-    public String createAccount(AccountEntity accountEntity) {
-        accountRepository.save(accountEntity);
-
-        return "Done";
+    public AccountEntity createAccount(AccountEntity accountEntity) {
+        return accountRepository.save(accountEntity);
     }
 
     

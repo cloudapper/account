@@ -35,9 +35,10 @@ public class AccountController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<String> singUp(@RequestBody AccountEntity account) {
-        LOG.info("Data saved: " + account.getFin());
-        return new ResponseEntity<>(account.getFin() + " saved!", HttpStatus.CREATED);
+    public ResponseEntity<AccountEntity> singUp(@RequestBody AccountEntity account) {
+        AccountEntity newAccount = accountService.createAccount(account);
+        LOG.info("Data saved: " + newAccount.getFin());
+        return new ResponseEntity<>(newAccount, HttpStatus.CREATED);
     }
 
     @GetMapping("/signin")
