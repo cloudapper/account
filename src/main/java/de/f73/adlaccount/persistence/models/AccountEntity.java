@@ -4,7 +4,11 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
 public class AccountEntity implements UserDetails {
@@ -20,6 +25,7 @@ public class AccountEntity implements UserDetails {
      */
     private static final long serialVersionUID = -2304345167761215742L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fin;
     private String password;
