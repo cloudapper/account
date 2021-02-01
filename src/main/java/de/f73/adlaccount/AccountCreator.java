@@ -23,7 +23,7 @@ public class AccountCreator implements CommandLineRunner {
         BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
         String pwd = bcryptPasswordEncoder.encode("rootPass123!");
         AccountEntity account = new AccountEntity();
-        account.setFin("WVWZZZ1KZDP045466");
+        account.setUsername("WVWZZZ1KZDP045466");
         account.setPassword(pwd);
         repository.save(account);
 

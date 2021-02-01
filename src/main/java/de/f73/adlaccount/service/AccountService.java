@@ -40,16 +40,16 @@ public class AccountService implements UserDetailsService {
         String encryptedPwd = bcryptPasswordEncoder.encode(accountEntity.getPassword());
         accountEntity.setPassword(encryptedPwd);
         AccountEntity newAccount = accountRepository.save(accountEntity);
-        LOG.info("account created for fin: " + newAccount.getFin());
+        LOG.info("account created for username: " + newAccount.getUsername());
         return newAccount;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String fin) throws UsernameNotFoundException {
-        AccountEntity account = accountRepository.findByFin(fin);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        AccountEntity account = accountRepository.findByUsername(username);
         if (account == null) {
-            LOG.error("fin " + fin + " not found");
-            throw new UsernameNotFoundException(fin);
+            LOG.error("username " + username + " not found");
+            throw new UsernameNotFoundException(username);
         }
         return account;
     }

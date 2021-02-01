@@ -6,6 +6,6 @@ import de.f73.adlaccount.persistence.models.AccountEntity;
 
 public interface AccountRepository extends JpaRepository<AccountEntity, Long> {
 
-    public AccountEntity findByFin(String fin);
+    public AccountEntity findByUsername(String username);
     
 }
