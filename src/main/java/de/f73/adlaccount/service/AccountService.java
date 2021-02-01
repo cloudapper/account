@@ -1,6 +1,9 @@
 package de.f73.adlaccount.service;
 
 import java.util.Base64;
+import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -53,4 +56,8 @@ public class AccountService implements UserDetailsService {
         }
         return account;
     }
+
+	public List<String> getFins() {
+		return accountRepository.findAll().stream().map(account -> account.getUsername()).collect(Collectors.toList());
+	}
 }
