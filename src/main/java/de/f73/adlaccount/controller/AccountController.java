@@ -45,6 +45,6 @@ public class AccountController {
     @GetMapping("/signin")
     public ResponseEntity<String> signIn() {
         LOG.info("Request on /signin");
-        return new ResponseEntity<>(accountService.getToken(), HttpStatus.CREATED);
+        return new ResponseEntity<>(accountService.getToken(), HttpStatus.OK);
     }   
 }
