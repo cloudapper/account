@@ -35,16 +35,16 @@ public class AccountController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<AccountEntity> singUp(@RequestBody AccountEntity account) {
+    public ResponseEntity<String> singUp(@RequestBody AccountEntity account) {
         LOG.info("Request on /signup, account fin and pw: " + account.getUsername() + ", " + account.getPassword());
         AccountEntity newAccount = accountService.createAccount(account);
         LOG.info("Data saved: " + newAccount.getUsername());
-        return new ResponseEntity<>(newAccount, HttpStatus.CREATED);
+        return new ResponseEntity<>(accountService.getToken(), HttpStatus.CREATED);
     }
 
     @GetMapping("/signin")
-    public String signIn() {
+    public ResponseEntity<String> signIn() {
         LOG.info("Request on /signin");
-        return accountService.getToken();
+        return new ResponseEntity<>(accountService.getToken(), HttpStatus.CREATED);
     }   
 }

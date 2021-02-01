@@ -36,28 +36,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity httpSecurity) throws Exception
     {
         httpSecurity
-                // .csrf().disable()
-                // .authorizeRequests()
-                // .antMatchers(HttpMethod.GET, "/").permitAll()
-                // .antMatchers(HttpMethod.POST, "/signup").permitAll()
-                // .anyRequest().authenticated()
-                // .and()
-                // .httpBasic();
                 .csrf().disable().cors().and()
                 .authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll().and()
                 .authorizeRequests().antMatchers(HttpMethod.GET, "/").permitAll().and()
                 .authorizeRequests().antMatchers(HttpMethod.POST, "/signup").permitAll().anyRequest().authenticated()
                 .and().httpBasic();
     }
-
-    // @Autowired
-    // public void configureGlobal(AuthenticationManagerBuilder auth)
-    //         throws Exception
-    // {
-    //     auth.inMemoryAuthentication()
-    //             .withUser(basicAuthUser)
-    //             .password("{noop}" + basicAuthPassword)
-    //             .roles("USER");
-    // }
 }
 
