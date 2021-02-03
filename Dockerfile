@@ -11,7 +11,7 @@ RUN mvn dependency:go-offline -B
 
 COPY src src
 
-RUN mvn package -DskipTests
+RUN mvn package
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 FROM openjdk:11.0.9.1-jre-slim-buster
