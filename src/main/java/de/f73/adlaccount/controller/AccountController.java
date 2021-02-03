@@ -1,5 +1,7 @@
 package de.f73.adlaccount.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +48,11 @@ public class AccountController {
     public ResponseEntity<String> signIn() {
         LOG.info("Request on /signin");
         return new ResponseEntity<>(accountService.getToken(), HttpStatus.OK);
+    }   
+
+    @GetMapping("/fins")
+    public ResponseEntity<List<String>> getFins() {
+        LOG.info("Request on /fins");
+        return new ResponseEntity<>(accountService.getFins(), HttpStatus.OK);
     }   
 }
