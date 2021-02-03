@@ -26,6 +26,6 @@ public class AccountCreator implements CommandLineRunner {
         account.setUsername("WVWZZZ1KZDP045466");
         account.setPassword(pwd);
         repository.save(account);
-
+        logger.info("Initial account created");
     }
 }

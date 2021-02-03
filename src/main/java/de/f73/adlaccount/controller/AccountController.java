@@ -36,7 +36,7 @@ public class AccountController {
 
     @PostMapping("/signup")
     public ResponseEntity<String> singUp(@RequestBody AccountEntity account) {
-        LOG.info("Request on /signup, account fin and pw: " + account.getUsername() + ", " + account.getPassword());
+        LOG.info("Request on /signup, account fin: " + account.getUsername());
         AccountEntity newAccount = accountService.createAccount(account);
         LOG.info("Data saved: " + newAccount.getUsername());
         return new ResponseEntity<>(accountService.getToken(), HttpStatus.CREATED);
